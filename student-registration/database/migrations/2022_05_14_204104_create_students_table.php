@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->tinyInteger('gender')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('phone_no')->nullable();
             $table->string('email')->nullable();

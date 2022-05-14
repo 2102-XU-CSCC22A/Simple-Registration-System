@@ -232,5 +232,6 @@ return [
 
         // Added alises for Model
         'Student' => App\Models\Student::class,
+        'StudentAddress' => App\Models\StudentAddress::class,
     ],
 ];

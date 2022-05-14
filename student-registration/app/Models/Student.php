@@ -16,6 +16,7 @@ class Student extends Model
         'first_name',
         'middle_name',
         'last_name',
+        'gender',
         'birthdate',
         'phone_no',
         'email',
@@ -36,6 +37,7 @@ class Student extends Model
         $first_name     = $request['first_name'];
         $middle_name    = $request['middle_name'];
         $last_name      = $request['last_name'];
+        $gender         = $request['gender'];
         $birthdate      = $request['birthdate'];
         $phone_no       = $request['phone_no'];
         $email          = $request['email'];
@@ -47,6 +49,7 @@ class Student extends Model
             'first_name'    => ucwords($first_name),
             'middle_name'   => ucwords($middle_name),
             'last_name'     => ucwords($last_name),
+            'gender'        => $gender,
             'birthdate'     => $birthdate,
             'phone_no'      => $phone_no,
             'email'         => $email,
@@ -70,6 +73,7 @@ class Student extends Model
         $first_name     = $request['first_name'];
         $middle_name    = $request['middle_name'];
         $last_name      = $request['last_name'];
+        $gender         = $request['gender'];
         $birthdate      = $request['birthdate'];
         $phone_no       = $request['phone_no'];
         $email          = $request['email'];
@@ -81,6 +85,7 @@ class Student extends Model
             'first_name'    => ucwords($first_name),
             'middle_name'   => ucwords($middle_name),
             'last_name'     => ucwords($last_name),
+            'gender'        => $gender,
             'birthdate'     => $birthdate,
             'phone_no'      => $phone_no,
             'email'         => $email,
