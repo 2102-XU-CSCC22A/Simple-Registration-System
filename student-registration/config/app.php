@@ -231,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         // Added alises for Model
+        'User' => App\Models\User::class,
         'Student' => App\Models\Student::class,
         'StudentAddress' => App\Models\StudentAddress::class,
     ],
