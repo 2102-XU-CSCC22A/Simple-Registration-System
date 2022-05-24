@@ -25,24 +25,25 @@ class Student extends Model
         'year_level'
     ];
 
-    public function getAll()
+    public function getAllStudent()
     {
         $student = Student::orderBy('created_at','asc')->get();
 
         return $student;
     }   
 
-    public function getById($param_id)
+    public function getByIdStudent($param_id)
     {
         $student = Student::where('id', $param_id)->first();
         
         return $student;
     }
 
-    public function delete($param_id)
+    public function deleteStudent($param_id)
     {
-        $student = JobPosting::find($param_id)->delete();
-        
+        // $student = Student::where('id', $param_id)->delete();
+        $student = Student::first($param_id)->delete();
+       
         return $student;
     }
 }

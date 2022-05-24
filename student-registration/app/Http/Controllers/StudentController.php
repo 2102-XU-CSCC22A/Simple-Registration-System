@@ -12,9 +12,9 @@ class StudentController extends Controller
         return view('template.students');
     }
 
-    public function getAll()
+    public function getAllStudent()
     {
-        $students = Student::getAll();
+        $students = Student::getAllStudent();
 
         $data = [];
         foreach($students as $s => $student)
@@ -33,9 +33,9 @@ class StudentController extends Controller
         return response()->json(['data' => $data], 200);
     }
 
-    public function getById($param_id)
+    public function getByIdStudent($param_id)
     {
-        $student = Student::getById($param_id);
+        $student = Student::getByIdStudent($param_id);
        
         $data = [
             'id'            => $student->id, 
@@ -57,10 +57,10 @@ class StudentController extends Controller
         return response()->json(['data' => $data,], 200);
     }
 
-    public function delete($param_id)
+    public function deleteStudent($param_id)
     {
-        $student = Student::delete($param_id);
-       
+        $student = Student::deleteStudent($param_id);
+        
         return response()->json([
             'reponse' => $student,
             'message' => 'student delete!'
