@@ -14,7 +14,14 @@ class UserLoginTest extends TestCase
      * @return void
      */
 
-    public function test_login()
+    public function test_show_login_form()
+    {
+        $response = $this->get('/login');
+
+        $response->assertStatus(200);
+    }
+    
+    public function test_login_submit()
     {
         $response = $this->withHeaders([
             'X-Header' => 'Value',
