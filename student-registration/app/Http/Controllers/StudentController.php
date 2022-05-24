@@ -54,6 +54,16 @@ class StudentController extends Controller
             'updated_at'    => $student->updated_at === null ? '' : $student->updated_at->format('D, d M Y').date(' | h:i A', strtotime($student->updated_at)),
         ];
         
-        return response()->json(['data' => $data], 200);
+        return response()->json(['data' => $data,], 200);
+    }
+
+    public function delete($param_id)
+    {
+        $student = Student::delete($param_id);
+       
+        return response()->json([
+            'reponse' => $student,
+            'message' => 'student delete!'
+        ], 200);  
     }
 }

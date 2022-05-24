@@ -39,4 +39,10 @@ class Student extends Model
         return $student;
     }
 
+    public function delete($param_id)
+    {
+        $student = JobPosting::find($param_id)->delete();
+        
+        return $student;
+    }
 }
