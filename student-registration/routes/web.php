@@ -30,3 +30,6 @@ Route::get('/password/reset', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/students', [StudentController::class, 'index'])->name('students');
+
+// Student Route
+Route::get('/student/getAll', [StudentController::class, 'getAll']);
