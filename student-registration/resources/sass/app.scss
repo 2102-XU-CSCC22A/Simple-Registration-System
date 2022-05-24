@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback'); 
 // Variables
 @import 'variables';
+@import 'custom-bootstrap.css';
+@import 'custom-admin-lte.css';
 
 // Bootstrap
 // @import '~admin-lte/build/scss/adminlte';
 
 // Import New Starts Here
-@import '~bootstrap/dist/css/bootstrap.min.css';
+// @import '~bootstrap/dist/css/bootstrap.min.css'; // Not Loaded as Custom is Loaded
 
 // AdminLTE
 @import "~admin-lte/plugins/jquery-ui/jquery-ui.css";
 @import "~admin-lte/plugins/jquery-ui/jquery-ui.theme.css";
 
-@import '~admin-lte/dist/css/adminlte.css';
+// @import '~admin-lte/dist/css/adminlte.css'; // Not Loaded as Custom is Loaded
 @import "~admin-lte/plugins/fontawesome-free/css/all.min.css";
 
 @import "~admin-lte/plugins/select2/css/select2.min.css";
