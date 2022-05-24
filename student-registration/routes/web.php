@@ -33,3 +33,4 @@ Route::get('/students', [StudentController::class, 'index'])->name('students');
 
 // Student Route
 Route::get('/student/getAll', [StudentController::class, 'getAll']);
+Route::get('/student/getById/{param_id}', [StudentController::class, 'getById']);
