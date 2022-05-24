@@ -31,4 +31,12 @@ class Student extends Model
 
         return $student;
     }   
+
+    public function getById($param_id)
+    {
+        $student = Student::where('id', $param_id)->first();
+        
+        return $student;
+    }
+
 }
