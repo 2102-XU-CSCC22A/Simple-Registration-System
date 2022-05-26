@@ -9,7 +9,7 @@
     
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="icon" type="image/x-icon" href=" {{ asset('images/logo_no_background.png') }} ">
+    <link rel="icon" type="image/x-icon" href=" {{ asset('images/xu_seal_logo.png') }} ">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}" defer></script> 
     <style>
