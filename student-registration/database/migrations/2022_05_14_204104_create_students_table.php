@@ -19,13 +19,14 @@ class CreateStudentsTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->string('suffix')->nullable();
             $table->tinyInteger('gender')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('phone_no')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('course')->nullable();
-            $table->string('year_level')->nullable();
+            $table->tinyInteger('year_level')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

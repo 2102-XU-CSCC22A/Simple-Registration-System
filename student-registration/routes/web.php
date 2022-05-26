@@ -27,13 +27,16 @@ Route::get('/password/reset', function () {
     return redirect('login');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/students', [StudentController::class, 'index'])->name('students');
+    Route::get('/students', function() { 
+        return view('template.students'); 
+    })->name('students');
 
-// Student Route
-Route::get('/student/getAll', [StudentController::class, 'getAllStudent']);
-Route::get('/student/getById/{param_id}', [StudentController::class, 'getByIdStudent']);
-Route::post('/student/create', [StudentController::class, 'createStudent']);
-Route::get('/student/update/{param_id}', [StudentController::class, 'updateStudent']); 
-Route::get('/student/delete/{param_id}', [StudentController::class, 'deleteStudent']);
+    Route::get('/student/getAll', [StudentController::class, 'getAllStudent']);
+    Route::get('/student/getById/{param_id}', [StudentController::class, 'getByIdStudent']);
+    Route::post('/student/create', [StudentController::class, 'createStudent']);
+    Route::post('/student/update/{param_id}', [StudentController::class, 'updateStudent']); 
+    Route::get('/student/delete/{param_id}', [StudentController::class, 'deleteStudent']);
+});

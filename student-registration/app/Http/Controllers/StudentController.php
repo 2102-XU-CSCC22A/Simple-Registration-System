@@ -7,11 +7,6 @@ use Student;
 
 class StudentController extends Controller
 {
-    public function index()
-    {
-        return view('template.students');
-    }
-
     public function getAllStudent()
     {
         $students = Student::getAllStudent();
@@ -24,9 +19,12 @@ class StudentController extends Controller
                 'id_number'     => $student->id_number,
                 'first_name'    => $student->first_name,
                 'middle_name'   => $student->middle_name,
+                'suffix'        => $student->suffix,
                 'last_name'     => $student->last_name,
                 'course'        => $student->course,
                 'year_level'    => $student->year_level,
+                'created_at'    => $student->created_at === null ? '' : $student->created_at->format('D, d M Y').date(' | h:i A', strtotime($student->created_at)),
+                'updated_at'    => $student->updated_at === null ? '' : $student->updated_at->format('D, d M Y').date(' | h:i A', strtotime($student->updated_at)),
             ];
         }
         
@@ -42,9 +40,10 @@ class StudentController extends Controller
             'id_number'     => $student->id_number,
             'first_name'    => $student->first_name,
             'middle_name'   => $student->middle_name,
+            'suffix'        => $student->suffix,
             'last_name'     => $student->last_name,
             'gender'        => $student->gender,
-            'birthdate'     => $student->birthdate,
+            'birthdate'     => $student->birthdate === null ? '' : $student->created_at->format('d-M-Y'),
             'phone_no'      => $student->phone_no,
             'email'         => $student->email,
             'address'       => $student->address,
@@ -65,7 +64,7 @@ class StudentController extends Controller
             'middle_name' => ['required', 'string', 'max:255'],
             'last_name'   => ['required', 'string', 'max:255'],
             'gender'      => ['required', 'string', 'max:2'],
-            'birthdate'   => ['required|date_format:Y-m-d|after_or_equal:1920-01-01'],
+            'birthdate'   => 'required|date_format:d-M-Y|after_or_equal:1920-01-01',
             'phone_no'    => ['required', 'string', 'max:18'],
             'email'       => ['required', 'string', 'max:255'],
             'address'     => ['required', 'string', 'max:255'],
@@ -90,7 +89,7 @@ class StudentController extends Controller
             'middle_name' => ['required', 'string', 'max:255'],
             'last_name'   => ['required', 'string', 'max:255'],
             'gender'      => ['required', 'string', 'max:2'],
-            'birthdate'   => ['required|date_format:Y-m-d|after_or_equal:1920-01-01'],
+            'birthdate'   => 'required|date_format:Y-m-d|after_or_equal:1920-01-01',
             'phone_no'    => ['required', 'string', 'max:18'],
             'email'       => ['required', 'string', 'max:255'],
             'address'     => ['required', 'string', 'max:255'],
@@ -113,7 +112,7 @@ class StudentController extends Controller
         
         return response()->json([
             'reponse' => $student,
-            'message' => 'student delete!'
+            'message' => 'student deleted!'
         ], 200);  
     }
 }

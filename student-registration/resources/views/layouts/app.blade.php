@@ -14,14 +14,8 @@
     <script src="{{ asset('js/app.js') }}" defer></script> 
     <style>
     @media screen and (min-width: 720px) {
-        .modal-custom-sm {
-            max-width: 375px; 
-        }
-        .modal-custom-md {
-            max-width: 475px; 
-        }
-        .modal-custom-lg {
-            max-width: 1275px;
+        .modal-custom {
+            max-width: 1000px;
         }
     }
     </style>
