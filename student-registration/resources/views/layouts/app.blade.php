@@ -15,7 +15,7 @@
     <style>
     @media screen and (min-width: 720px) {
         .modal-custom {
-            max-width: 1000px;
+            max-width: 1175px;
         }
     }
     </style>

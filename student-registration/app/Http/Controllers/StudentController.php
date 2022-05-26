@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Student;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -59,17 +60,17 @@ class StudentController extends Controller
     public function createStudent(Request $request) 
     {
         $request->validate([
-            'id_number'   => ['required', 'string', 'max:20'],
+            'id_number'   => ['required', 'string', 'max:20', Rule::unique('students')], 
             'first_name'  => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
             'last_name'   => ['required', 'string', 'max:255'],
             'gender'      => ['required', 'string', 'max:2'],
             'birthdate'   => 'required|date_format:d-M-Y|after_or_equal:1920-01-01',
-            'phone_no'    => ['required', 'string', 'max:18'],
-            'email'       => ['required', 'string', 'max:255'],
+            'phone_no'    => ['required', 'regex:/(09)[0-9]{9}/', Rule::unique('students')],
+            'email'       => ['required', 'email', Rule::unique('students')], 
             'address'     => ['required', 'string', 'max:255'],
             'course'      => ['required', 'string', 'max:255'],
-            'year_level'  => ['required', 'string', 'max:255'],
+            'year_level'  => ['required', 'string', 'max:2'],
         ]);
     
         $student = Student::createStudent($request);
@@ -84,17 +85,17 @@ class StudentController extends Controller
     public function updateStudent(Request $request, $param_id) 
     {
         $request->validate([
-            'id_number'   => ['required', 'string', 'max:20'],
+            'id_number'   => ['required', 'string', 'max:20', Rule::unique('students')->ignore($param_id)],
             'first_name'  => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],
             'last_name'   => ['required', 'string', 'max:255'],
             'gender'      => ['required', 'string', 'max:2'],
-            'birthdate'   => 'required|date_format:Y-m-d|after_or_equal:1920-01-01',
-            'phone_no'    => ['required', 'string', 'max:18'],
-            'email'       => ['required', 'string', 'max:255'],
+            'birthdate'   => 'required|date_format:d-M-Y|after_or_equal:1920-01-01',
+            'phone_no'    => ['required', 'regex:/(09)[0-9]{9}/', Rule::unique('students')->ignore($param_id)],
+            'email'       => ['required', 'email', Rule::unique('students')->ignore($param_id)],
             'address'     => ['required', 'string', 'max:255'],
             'course'      => ['required', 'string', 'max:255'],
-            'year_level'  => ['required', 'string', 'max:255'],
+            'year_level'  => ['required', 'string', 'max:2'],
         ]);
 
         $student = Student::updateStudent($request, $param_id);

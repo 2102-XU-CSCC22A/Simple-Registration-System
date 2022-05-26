@@ -38,5 +38,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/student/getById/{param_id}', [StudentController::class, 'getByIdStudent']);
     Route::post('/student/create', [StudentController::class, 'createStudent']);
     Route::post('/student/update/{param_id}', [StudentController::class, 'updateStudent']); 
-    Route::get('/student/delete/{param_id}', [StudentController::class, 'deleteStudent']);
+    Route::post('/student/delete/{param_id}', [StudentController::class, 'deleteStudent']);
 });

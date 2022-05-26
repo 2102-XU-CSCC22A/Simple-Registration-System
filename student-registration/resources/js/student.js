@@ -2,7 +2,7 @@ const Swal = require('sweetalert2')
 
 $(function()   
 {
-    let student, temp, action_name;
+    let student, temp, endpoint;
 
     $('.date-time-picker').datetimepicker({
         format: 'DD-MMM-YYYY',
@@ -45,9 +45,25 @@ $(function()
     });
 
     function get_student(param_id) {
-        action_name = 'update'
-        $('#student-form')[0].reset();
+        endpoint = 'update'
 
+        $('#delete-student-modal-btn').show();
+
+        $('#student-form')[0].reset();
+        $('#position-name-error').empty();
+        $('#last-name-error').empty();
+        $('#first-name-error').empty();
+        $('#middle-name-error').empty();
+        $('#suffix-error').empty();
+        $('#id-number-error').empty();
+        $('#birthdate-error').empty();
+        $('#gender-error').empty();
+        $('#year-level-error').empty();
+        $('#course-error').empty();
+        $('#email-error').empty();
+        $('#phone-no-error').empty();
+        $('#address-error').empty();
+        
         $.get(`/student/getById/${param_id}`, function(result) {
             $('#id_number').empty().val(result.data.id_number);
             $('#first_name').empty().val(result.data.first_name); 
@@ -72,9 +88,25 @@ $(function()
     }
 
     $('body').on('click', '#create-student-btn', function() {
-        action_name = 'create';
+        endpoint = 'create';
         
+        $('#delete-student-modal-btn').hide();
+
         $('#student-form')[0].reset();
+        $('#position-name-error').empty();
+        $('#last-name-error').empty();
+        $('#first-name-error').empty();
+        $('#middle-name-error').empty();
+        $('#suffix-error').empty();
+        $('#id-number-error').empty();
+        $('#birthdate-error').empty();
+        $('#gender-error').empty();
+        $('#year-level-error').empty();
+        $('#course-error').empty();
+        $('#email-error').empty();
+        $('#phone-no-error').empty();
+        $('#address-error').empty();
+
         $('.card-modal-title').text('Create Student');
         $('#save-student-modal-btn').text('Create').prepend( '<i class="fas fa-check fa-fw"></i>' );
         $('#modal-form-student').modal('show');
@@ -86,7 +118,7 @@ $(function()
         $('#save-student-modal-btn').prop('disabled', true);
         $('#close-student-modal-btn').prop('disabled', true);
        
-        if(action_name == 'create') {
+        if(endpoint == 'create') {
             save_url = '/student/create';
             save_title = 'Sucessfully Created';
             save_message = 'New student has been created.';
@@ -117,30 +149,44 @@ $(function()
                     text: save_message,
                     showConfirmButton: false,
                     timer: 1500
-                })
-                $('#student-form')[0].reset();
-             
+                });
+
+                $('#position-name-error').empty();
+                $('#last-name-error').empty();
+                $('#first-name-error').empty();
+                $('#middle-name-error').empty();
+                $('#suffix-error').empty();
+                $('#id-number-error').empty();
+                $('#birthdate-error').empty();
+                $('#gender-error').empty();
+                $('#year-level-error').empty();
+                $('#course-error').empty();
+                $('#email-error').empty();
+                $('#phone-no-error').empty();
+                $('#address-error').empty();
+                
                 $('#save-student-modal-btn').prop('disabled', false);
                 $('#close-student-modal-btn').prop('disabled', false);
 
                 student.ajax.reload(); 
+                $('#modal-form-student').modal('hide');
             },
             error: function(data) {
                 var obj = JSON.parse(data.responseText);
                 console.log(obj.errors);
                 if(obj.errors) {
-                    $('#last-name-error').html(obj.errors.last_name);
-                    $('#first-name-error').html(obj.errors.first_name);
-                    $('#middle-name-error').html(obj.errors.middle_name);
-                    $('#suffix-error').html(obj.errors.suffix);
-                    $('#id-number-error').html(obj.errors.id_number);
-                    $('#birthdate-error').html(obj.errors.birthdate);
-                    $('#gender-error').html(obj.errors.gender);
-                    $('#year-level-error').html(obj.errors.year_level);
-                    $('#course-error').html(obj.errors.course);
-                    $('#email-error').html(obj.errors.email);
-                    $('#phone-no-error').html(obj.errors.phone_no);
-                    $('#address-error').html(obj.errors.address);
+                    $('#last-name-error').empty().html(obj.errors.last_name);
+                    $('#first-name-error').empty().html(obj.errors.first_name);
+                    $('#middle-name-error').empty().html(obj.errors.middle_name);
+                    $('#suffix-error').empty().html(obj.errors.suffix);
+                    $('#id-number-error').empty().html(obj.errors.id_number);
+                    $('#birthdate-error').empty().html(obj.errors.birthdate);
+                    $('#gender-error').empty().html(obj.errors.gender);
+                    $('#year-level-error').empty().html(obj.errors.year_level);
+                    $('#course-error').empty().html(obj.errors.course);
+                    $('#email-error').empty().html(obj.errors.email);
+                    $('#phone-no-error').empty().html(obj.errors.phone_no);
+                    $('#address-error').empty().html(obj.errors.address);
 
                     $('#save-student-modal-btn').prop('disabled', false);
                     $('#close-student-modal-btn').prop('disabled', false);
@@ -149,8 +195,10 @@ $(function()
         });
     });
 
-    $('body').on('click', '.delete-student-btn', function() {
-        let delete_key = $(this).data('id');
+    $('body').on('click', '#delete-student-modal-btn', function() {
+        let param_id = temp
+
+        $('#delete-student-modal-btn').prop('disabled', true);
         
         Swal.fire({
             title: 'Delete Student',
@@ -170,10 +218,7 @@ $(function()
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     type: 'POST',
-                    url: '/student/delete',
-                    data: {
-                        delete_key: delete_key,
-                    },
+                    url: `/student/delete/${param_id}`,
                     success: function() {
                         Swal.fire({
                             position: 'center',
@@ -184,7 +229,8 @@ $(function()
                             timer: 1500
                         })
                         
-                        student.ajax.reload();   
+                        student.ajax.reload(); 
+                        $('#modal-form-student').modal('hide');
                     },
                     error: function() {
                         Swal.fire({
@@ -208,6 +254,8 @@ $(function()
                     timer: 1500
                 })
             }
+
+            $('#delete-student-modal-btn').prop('disabled', false);
         });
     });
 });

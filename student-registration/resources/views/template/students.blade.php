@@ -68,7 +68,7 @@
                                             @csrf
                                             <form id="student-form">
                                                 <div class="row">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-3">
                                                         <div class="mt-1">
                                                             <label for="last_name">Last Name</label> 
                                                         </div>
@@ -122,7 +122,7 @@
                                                         <hr>
                                                     </div>
                                                     
-                                                    <div class="col-md-2">
+                                                    <div class="col-md-3">
                                                         <div class="mt-1">
                                                             <label for="suffix">Suffix</label>   
                                                         </div>
@@ -301,9 +301,13 @@
                                             </form>
                                         </div>
                                         <div class="card-footer">
+                                            <button type="button" id="delete-student-modal-btn" class="btn btn-outline-primary float-left">
+                                                <i class="fas fa-trash fa-fw"></i>Delete
+                                            </button>
                                             <button type="button" id="save-student-modal-btn" class="btn btn-outline-primary float-right"></button>
                                             <button type="button" id="close-student-modal-btn" class="btn btn-outline-primary float-right mr-2" data-dismiss="modal">
-                                            <i class="fas fa-times fa-fw"></i>Cancel</button>
+                                                <i class="fas fa-times fa-fw"></i>Cancel
+                                            </button>
                                         </div>   
                                     </div>
                                 </div>
