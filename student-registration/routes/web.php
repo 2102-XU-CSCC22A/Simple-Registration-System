@@ -34,5 +34,6 @@ Route::get('/students', [StudentController::class, 'index'])->name('students');
 // Student Route
 Route::get('/student/getAll', [StudentController::class, 'getAllStudent']);
 Route::get('/student/getById/{param_id}', [StudentController::class, 'getByIdStudent']);
-Route::get('/student/delete/{param_id}', [StudentController::class, 'deleteStudent']);
 Route::post('/student/create', [StudentController::class, 'createStudent']);
+Route::get('/student/update/{param_id}', [StudentController::class, 'updateStudent']); 
+Route::get('/student/delete/{param_id}', [StudentController::class, 'deleteStudent']);
