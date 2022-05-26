@@ -39,6 +39,26 @@ class Student extends Model
         return $student;
     }
 
+    public function createStudent($request)
+    {
+        $student = Student::create([
+            'id_number'   => ucwords($request['id_number']),
+            'first_name'  => ucwords($request['first_name']),
+            'middle_name' => ucwords($request['middle_name']),
+            'last_name'   => ucwords($request['last_name']),
+            'gender'      => ucwords($request['gender']),
+            'birthdate'   => ucwords($request['birthdate']),
+            'phone_no'    => ucwords($request['phone_no']),
+            'email'       => ucwords($request['email']),
+            'address'     => ucwords($request['address']),
+            'course'      => ucwords($request['course']),
+            'year_level'  => ucwords($request['year_level']),
+        ]);
+
+        return $student;
+    }
+
+
     public function deleteStudent($param_id)
     {
         // $student = Student::where('id', $param_id)->delete();

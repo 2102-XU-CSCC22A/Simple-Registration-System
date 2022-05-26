@@ -32,6 +32,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/students', [StudentController::class, 'index'])->name('students');
 
 // Student Route
-Route::get('/student/getAllStudent', [StudentController::class, 'getAllStudent']);
-Route::get('/student/getByIdStudent/{param_id}', [StudentController::class, 'getByIdStudent']);
-Route::get('/student/deleteStudent/{param_id}', [StudentController::class, 'deleteStudent']);
+Route::get('/student/getAll', [StudentController::class, 'getAllStudent']);
+Route::get('/student/getById/{param_id}', [StudentController::class, 'getByIdStudent']);
+Route::get('/student/delete/{param_id}', [StudentController::class, 'deleteStudent']);
+Route::post('/student/create', [StudentController::class, 'createStudent']);
