@@ -57,6 +57,31 @@ class StudentController extends Controller
         return response()->json(['data' => $data,], 200);
     }
 
+    public function createStudent(Request $request) 
+    {
+        $request->validate([
+            'id_number'   => ['required', 'string', 'max:20'],
+            'first_name'  => ['required', 'string', 'max:255'],
+            'middle_name' => ['required', 'string', 'max:255'],
+            'last_name'   => ['required', 'string', 'max:255'],
+            'gender'      => ['required', 'string', 'max:2'],
+            'birthdate'   => ['required|date_format:Y-m-d|after_or_equal:1920-01-01'],
+            'phone_no'    => ['required', 'string', 'max:18'],
+            'email'       => ['required', 'string', 'max:255'],
+            'address'     => ['required', 'string', 'max:255'],
+            'course'      => ['required', 'string', 'max:255'],
+            'year_level'  => ['required', 'string', 'max:255'],
+        ]);
+    
+        $student = Student::createStudent($request);
+        
+        return response()->json([
+            'reponse' => $student,
+            'request' => $request->all(),
+            'message' => 'created dealership successfully'
+        ], 200);  
+    }
+
     public function deleteStudent($param_id)
     {
         $student = Student::deleteStudent($param_id);
