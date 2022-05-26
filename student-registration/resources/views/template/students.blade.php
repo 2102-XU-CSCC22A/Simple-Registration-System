@@ -130,6 +130,10 @@
                                                             <select type="text" class="form-control" id="suffix" name="suffix" required autocomplete="suffix">
                                                                 <option value=''>- Suffix -</option>
                                                                 <option value='Jr.'>Jr.</option>
+                                                                <option value='Sr.'>Sr.</option>
+                                                                <option value='II'>II</option>
+                                                                <option value='III'>III</option>
+                                                                <option value='IV'>IV</option>
                                                             </select>   
                                                             <div class="input-group-append">
                                                                 <div class="input-group-text">
