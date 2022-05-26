@@ -42,17 +42,36 @@ class Student extends Model
     public function createStudent($request)
     {
         $student = Student::create([
-            'id_number'   => ucwords($request['id_number']),
+            'id_number'   => ['id_number'],
             'first_name'  => ucwords($request['first_name']),
             'middle_name' => ucwords($request['middle_name']),
             'last_name'   => ucwords($request['last_name']),
-            'gender'      => ucwords($request['gender']),
-            'birthdate'   => ucwords($request['birthdate']),
-            'phone_no'    => ucwords($request['phone_no']),
-            'email'       => ucwords($request['email']),
+            'gender'      => ['gender'],
+            'birthdate'   => ['birthdate'],
+            'phone_no'    => ['phone_no'],
+            'email'       => ['email'],
             'address'     => ucwords($request['address']),
             'course'      => ucwords($request['course']),
-            'year_level'  => ucwords($request['year_level']),
+            'year_level'  => ['year_level'],
+        ]);
+
+        return $student;
+    }
+
+    public function updateStudent($request, $param_id)
+    {
+        $student = Student::where('id', $param_id)->update([
+            'id_number'   => ['id_number'],
+            'first_name'  => ucwords($request['first_name']),
+            'middle_name' => ucwords($request['middle_name']),
+            'last_name'   => ucwords($request['last_name']),
+            'gender'      => ['gender'],
+            'birthdate'   => ['birthdate'],
+            'phone_no'    => ['phone_no'],
+            'email'       => ['email'],
+            'address'     => ucwords($request['address']),
+            'course'      => ucwords($request['course']),
+            'year_level'  => ['year_level'],
         ]);
 
         return $student;
