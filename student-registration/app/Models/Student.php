@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Student extends Model
 {
@@ -16,6 +17,7 @@ class Student extends Model
         'first_name',
         'middle_name',
         'last_name',
+        'suffix',
         'gender',
         'birthdate',
         'phone_no',
@@ -42,17 +44,18 @@ class Student extends Model
     public function createStudent($request)
     {
         $student = Student::create([
-            'id_number'   => ['id_number'],
+            'id_number'   => $request['id_number'],
             'first_name'  => ucwords($request['first_name']),
             'middle_name' => ucwords($request['middle_name']),
             'last_name'   => ucwords($request['last_name']),
-            'gender'      => ['gender'],
-            'birthdate'   => ['birthdate'],
-            'phone_no'    => ['phone_no'],
-            'email'       => ['email'],
+            'suffix'      => ucwords($request['suffix']),
+            'gender'      => $request['gender'],
+            'birthdate'   => Carbon::createFromFormat('d-M-Y', $request['birthdate'])->format('Y-m-d'),
+            'phone_no'    => $request['phone_no'],
+            'email'       => $request ['email'],
             'address'     => ucwords($request['address']),
             'course'      => ucwords($request['course']),
-            'year_level'  => ['year_level'],
+            'year_level'  => $request['year_level'],
         ]);
 
         return $student;
@@ -61,27 +64,27 @@ class Student extends Model
     public function updateStudent($request, $param_id)
     {
         $student = Student::where('id', $param_id)->update([
-            'id_number'   => ['id_number'],
+            'id_number'   => $request['id_number'],
             'first_name'  => ucwords($request['first_name']),
             'middle_name' => ucwords($request['middle_name']),
             'last_name'   => ucwords($request['last_name']),
-            'gender'      => ['gender'],
-            'birthdate'   => ['birthdate'],
-            'phone_no'    => ['phone_no'],
-            'email'       => ['email'],
+            'suffix'      => ucwords($request['suffix']),
+            'gender'      => $request['gender'],
+            'birthdate'   => Carbon::createFromFormat('d-M-Y', $request['birthdate'])->format('Y-m-d'),
+            'phone_no'    => $request['phone_no'],
+            'email'       => $request['email'],
             'address'     => ucwords($request['address']),
             'course'      => ucwords($request['course']),
-            'year_level'  => ['year_level'],
+            'year_level'  => $request['year_level'],
         ]);
 
         return $student;
     }
 
-
     public function deleteStudent($param_id)
     {
-        // $student = Student::where('id', $param_id)->delete();
-        $student = Student::first($param_id)->delete();
+        $student = Student::where('id', $param_id)->delete();
+        // $student = Student::first($param_id)->delete();
        
         return $student;
     }
