@@ -46,7 +46,7 @@
 </nav>
 
 <aside class="main-sidebar sidebar-dark-white elevation-4">
-    <a href=" {{ route('home') }} " class="brand-link">
+    <a href=" {{ route('students') }} " class="brand-link">
         <img src=" {{ asset('images/xu_seal_logo.png') }} " alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .9">
         XU Student Registration
     </a>
@@ -55,13 +55,6 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 @if (Auth::user())
-                <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link" id="home-link">
-                    <i class="nav-icon far fa-circle"></i>
-                    <p>Home</p>
-                </a>
-                </li>
-
                 <li class="nav-item">
                 <a href="{{ route('students') }}" class="nav-link" id="students-link">
                     <i class="nav-icon fas fa-clipboard-list"></i>
