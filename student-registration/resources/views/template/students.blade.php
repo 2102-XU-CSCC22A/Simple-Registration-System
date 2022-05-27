@@ -40,6 +40,7 @@
                                             <th>First Name</th>
                                             <th>Middle Name</th>
                                             <th>Last Name</th>
+                                            <th>Suffix</th>
                                             <th>Program / Course</th>
                                             <th>Year Level</th>
                                         </tr>

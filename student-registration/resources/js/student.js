@@ -31,6 +31,7 @@ $(function()
             {title: 'First Name', data: 'first_name', name: 'first_name'},
             {title: 'Middle Name', data: 'middle_name', name: 'middle_name'},
             {title: 'Last Name', data: 'last_name', name: 'last_name'},
+            {title: 'Suffix', data: 'suffix', name: 'suffix'},
             {title: 'Program / Course', data: 'course', name: 'course'},
             {title: 'Year Level', data: 'year_level', name: 'year_level'},
         ],
