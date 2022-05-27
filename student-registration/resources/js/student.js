@@ -6,7 +6,6 @@ $(function()
 
     $('.date-time-picker').datetimepicker({
         format: 'DD-MMM-YYYY',
-        daysOfWeekDisabled: [0, 6],
         allowInputToggle: true
     });
 
