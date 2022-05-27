@@ -48,7 +48,7 @@
 <aside class="main-sidebar sidebar-dark-white elevation-4">
     <a href=" {{ route('students') }} " class="brand-link">
         <img src=" {{ asset('images/xu_seal_logo.png') }} " alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .9">
-        XU Student Registration
+        <span class="brand-text font-weight-heavy text-md"><b>XU</b> Student Registration</span>
     </a>
 
     <div class="sidebar">

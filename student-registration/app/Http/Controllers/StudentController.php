@@ -20,7 +20,7 @@ class StudentController extends Controller
                 'id_number'     => $student->id_number,
                 'first_name'    => $student->first_name,
                 'middle_name'   => $student->middle_name,
-                'suffix'        => $student->suffix,
+                'suffix'        => $student->suffix === '' ? '-' : $student->suffix,
                 'last_name'     => $student->last_name,
                 'course'        => $student->course,
                 'year_level'    => $student->year_level,

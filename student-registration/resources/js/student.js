@@ -194,6 +194,9 @@ $(function()
                 }
             },
         });
+
+        $('#save-student-modal-btn').prop('disabled', false);
+        $('#close-student-modal-btn').prop('disabled', false);
     });
 
     $('body').on('click', '#delete-student-modal-btn', function() {
