@@ -230,6 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Added alises for Model
+        'User' => App\Models\User::class,
+        'Student' => App\Models\Student::class,
     ],
-
 ];

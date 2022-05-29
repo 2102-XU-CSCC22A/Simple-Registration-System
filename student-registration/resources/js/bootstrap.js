@@ -1,14 +1,48 @@
 window._ = require('lodash');
 
 /**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
  */
 
-window.axios = require('axios');
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+    require('bootstrap');
+} catch (e) {
+}
+
+import'admin-lte/plugins/jquery/jquery.min.js';
+import'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js';
+import'admin-lte/plugins/bs-custom-file-input/bs-custom-file-input.min.js';
+import'admin-lte/plugins/datatables/jquery.dataTables.min.js';
+import'admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js';
+import'admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js';
+import'admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js';
+import'admin-lte/plugins/datatables-buttons/js/dataTables.buttons.min.js';
+import'admin-lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js';
+
+import'admin-lte/plugins/jszip/jszip.min.js';
+import'admin-lte/plugins/pdfmake/pdfmake.min.js';
+import'admin-lte/plugins/pdfmake/vfs_fonts.js';
+
+import'admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js';
+import'admin-lte/plugins/datatables-buttons/js/buttons.print.min.js';
+import'admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js';
+
+import'admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js';
+import'admin-lte/plugins/bootstrap/js/bootstrap.min.js';
+import'admin-lte/plugins/datatables-select/js/dataTables.select.min.js';
+
+import'admin-lte/plugins/jquery/jquery.min.js';
+import'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js';
+import'admin-lte/plugins/select2/js/select2.full.min.js';
+
+import'admin-lte/plugins/daterangepicker/daterangepicker.js';
+import'admin-lte/plugins/jquery-ui/jquery-ui.js';
+import'admin-lte/dist/js/adminlte.min.js';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -24,5 +58,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     broadcaster: 'pusher',
 //     key: process.env.MIX_PUSHER_APP_KEY,
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
+//     encrypted: true
 // });
